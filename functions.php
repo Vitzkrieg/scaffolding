@@ -34,10 +34,12 @@
  * 11.0 - Custom/Additional Functions
  */
 
+define( 'SCAFFOLDING_INCLUDE_PATH', dirname( __FILE__ ) . '/includes/' );
+
 define( 'SCAFFOLDING_THEME_VERSION', '20180814' );
+
 // Set to true to use jsdeliver.com CDN for libraries.
 define( 'SCAFFOLDING_USE_JSDELIVR_CDN', false );
-define( 'SCAFFOLDING_INCLUDE_PATH', dirname( __FILE__ ) . '/includes/' );
 
 
 /************************************
@@ -48,9 +50,15 @@ define( 'SCAFFOLDING_INCLUDE_PATH', dirname( __FILE__ ) . '/includes/' );
 require_once SCAFFOLDING_INCLUDE_PATH . 'base-functions.php';
 require_once SCAFFOLDING_INCLUDE_PATH . 'tinymce-settings.php';
 // require_once( SCAFFOLDING_INCLUDE_PATH . 'theme-guide.php' );
+
 // Gravity Forms Customizations.
 if ( class_exists( 'GFForms' ) ) {
 	require_once SCAFFOLDING_INCLUDE_PATH . 'gf-customizations.php';
+}
+
+// WooCommerce Customizations.
+if ( function_exists( 'is_woocommerce' ) ) {
+	require_once( SCAFFOLDING_INCLUDE_PATH . 'woocommerce-overrides.php' );
 }
 
 
